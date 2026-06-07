@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>عبدالله عادل - أخصائي نفسي</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Arial, sans-serif;
+      direction: rtl;
+      background: #f5f4f0;
+      min-height: 100vh;
+      padding: 16px 0 40px;
+    }
+    .app { max-width: 420px; margin: 0 auto; padding: 0 12px; }
+
+    .hero {
+      background: #fff;
+      border-radius: 14px;
+      padding: 28px 20px;
+      margin-bottom: 12px;
+      text-align: center;
+      border: 0.5px solid #e0dfd8;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.06);
+    }
+    .avatar {
+      width: 84px; height: 84px; border-radius: 50%;
+      background: #EEEDFE;
+      display: flex; align-items: center; justify-content: center;
+      margin: 0 auto 14px;
+      font-size: 30px; font-weight: 600; color: #3C3489;
+    }
+    .name { font-size: 22px; font-weight: 600; color: #1a1a1a; margin-bottom: 6px; }
+    .title-badge {
+      display: inline-block;
+      background: #EEEDFE; color: #3C3489;
+      font-size: 13px; padding: 5px 16px;
+      border-radius: 8px; margin-bottom: 12px;
+    }
+    .bio { font-size: 14px; color: #666; line-height: 1.7; }
+
+    .section { margin-bottom: 12px; }
+    .section-title { font-size: 13px; font-weight: 600; color: #888; margin-bottom: 8px; }
+
+    .service-card {
+      background: #fff; border: 0.5px solid #e0dfd8;
+      border-radius: 14px; padding: 16px;
+      display: flex; align-items: center; gap: 14px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .service-icon { font-size: 30px; color: #534AB7; }
+    .service-name { font-size: 15px; font-weight: 600; color: #1a1a1a; margin-bottom: 3px; }
+    .service-detail { font-size: 13px; color: #888; }
+    .price-badge {
+      margin-top: 7px; display: inline-block;
+      background: #EEEDFE; color: #3C3489;
+      font-size: 13px; font-weight: 600;
+      padding: 3px 14px; border-radius: 8px;
+    }
+
+    .contact-row { display: flex; gap: 8px; }
+    .contact-btn {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      gap: 7px; padding: 13px;
+      border-radius: 10px; border: 0.5px solid #e0dfd8;
+      font-size: 14px; font-weight: 600; cursor: pointer;
+      text-decoration: none; transition: opacity 0.15s;
+    }
+    .contact-btn:hover { opacity: 0.85; }
+    .contact-btn.whatsapp { background: #E1F5EE; color: #0F6E56; border-color: #9FE1CB; }
+    .contact-btn.email { background: #E6F1FB; color: #185FA5; border-color: #B5D4F4; }
+
+    .booking-card {
+      background: #fff; border: 0.5px solid #e0dfd8;
+      border-radius: 14px; padding: 18px;
+      box-shadow: 0 1px 4px rgba(0,0,0,0.04);
+    }
+    .sub-label { font-size: 13px; color: #888; margin-bottom: 10px; }
+
+    .days-row { display: flex; gap: 7px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 14px; }
+    .day-btn {
+      min-width: 58px; padding: 9px 4px;
+      border-radius: 10px; border: 0.5px solid #e0dfd8;
+      background: #f5f4f0; font-size: 11px;
+      text-align: center; cursor: pointer; color: #888;
+      flex-shrink: 0; transition: all 0.15s;
+    }
+    .day-btn:hover { background: #EEEDFE; color: #3C3489; }
+    .day-btn.selected { background: #EEEDFE; color: #3C3489; border-color: #AFA9EC; }
+    .day-name { font-weight: 600; font-size: 12px; }
+    .day-date { font-size: 10px; margin-top: 2px; }
+
+    .times-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px; margin-bottom: 14px; }
+    .time-btn {
+      padding: 10px 4px; border-radius: 10px;
+      border: 0.5px solid #e0dfd8; background: #f5f4f0;
+      font-size: 13px; text-align: center; cursor: pointer;
+      color: #555; transition: all 0.15s;
+    }
+    .time-btn:hover { background: #EEEDFE; color: #3C3489; }
+    .time-btn.selected { background: #EEEDFE; color: #3C3489; border-color: #AFA9EC; font-weight: 600; }
+
+    .input-group { margin-bottom: 11px; }
+    .input-group label { font-size: 12px; color: #888; margin-bottom: 5px; display: block; }
+    .input-group input {
+      width: 100%; padding: 11px 13px;
+      border: 0.5px solid #e0dfd8; border-radius: 10px;
+      font-size: 14px; background: #f9f8f5;
+      color: #1a1a1a; font-family: inherit;
+      outline: none; transition: border 0.15s;
+    }
+    .input-group input:focus { border-color: #AFA9EC; background: #fff; }
+
+    .submit-btn {
+      width: 100%; padding: 14px;
+      background: #534AB7; color: #EEEDFE;
+      border: none; border-radius: 10px;
+      font-size: 15px; font-weight: 600;
+      cursor: pointer; font-family: inherit;
+      transition: background 0.15s;
+    }
+    .submit-btn:hover { background: #3C3489; }
+    .submit-btn:disabled { background: #ccc; color: #999; cursor: not-allowed; }
+
+    .success-msg {
+      display: none;
+      background: #E1F5EE; color: #0F6E56;
+      border: 0.5px solid #9FE1CB;
+      border-radius: 10px; padding: 16px;
+      text-align: center; font-size: 14px;
+      margin-top: 12px; line-height: 1.9;
+      white-space: pre-line;
+    }
+
+    @media (max-width: 440px) {
+      body { padding: 10px 0 32px; }
+      .app { padding: 0 8px; }
+    }
+  </style>
+</head>
+<body>
+<div class="app">
+
+  <div class="hero">
+    <div class="avatar">عا</div>
+    <div class="name">عبدالله عادل</div>
+    <div class="title-badge"><i class="ti ti-brain"></i> أخصائي نفسي</div>
+    <div class="bio">متخصص في الإرشاد النفسي الفردي والأسري · جلسات أونلاين بالكامل · متاح للحجز الآن</div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">الخدمة المتاحة</div>
+    <div class="service-card">
+      <div class="service-icon"><i class="ti ti-device-laptop"></i></div>
+      <div>
+        <div class="service-name">جلسة أونلاين</div>
+        <div class="service-detail">إرشاد فردي أو أسري · ٦٠ دقيقة</div>
+        <div class="price-badge">٢٠٠ جنيه</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">تواصل معي</div>
+    <div class="contact-row">
+      <a class="contact-btn whatsapp" href="https://wa.me/201150634927" target="_blank">
+        <i class="ti ti-brand-whatsapp"></i> واتساب
+      </a>
+      <a class="contact-btn email" href="mailto:bodydoda2025@gmail.com">
+        <i class="ti ti-mail"></i> جيميل
+      </a>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">احجز موعدك</div>
+    <div class="booking-card">
+      <div class="sub-label">اختر اليوم</div>
+      <div class="days-row" id="daysRow"></div>
+      <div class="sub-label">اختر الوقت</div>
+      <div class="times-grid" id="timesGrid"></div>
+      <div class="input-group">
+        <label>الاسم الكامل</label>
+        <input type="text" id="clientName" placeholder="اكتب اسمك هنا..." />
+      </div>
+      <div class="input-group">
+        <label>رقم الواتساب</label>
+        <input type="tel" id="clientPhone" placeholder="01xxxxxxxxx" />
+      </div>
+      <button class="submit-btn" id="submitBtn" onclick="submitBooking()">تأكيد الحجز ← ٢٠٠ جنيه</button>
+      <div class="success-msg" id="successMsg"></div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  const times = ['٩:٠٠ ص','١٠:٠٠ ص','١٢:٠٠ م','٢:٠٠ م','٤:٠٠ م','٦:٠٠ م'];
+  let selDay = null, selTime = null;
+
+  function getNextDays() {
+    const result = [];
+    const d = new Date();
+    const arDays = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
+    let count = 0;
+    while (result.length < 5 && count < 14) {
+      const day = d.getDay();
+      if (day !== 5 && day !== 6) {
+        result.push({ name: arDays[day], date: d.getDate() + '/' + (d.getMonth()+1), idx: result.length });
+      }
+      d.setDate(d.getDate() + 1);
+      count++;
+    }
+    return result;
+  }
+
+  function renderDays() {
+    document.getElementById('daysRow').innerHTML = getNextDays().map((d, i) =>
+      `<div class="day-btn${selDay===i?' selected':''}" onclick="selectDay(${i})">
+        <div class="day-name">${d.name}</div>
+        <div class="day-date">${d.date}</div>
+      </div>`
+    ).join('');
+  }
+
+  function renderTimes() {
+    document.getElementById('timesGrid').innerHTML = times.map(t =>
+      `<div class="time-btn${selTime===t?' selected':''}" onclick="selectTime('${t}')">${t}</div>`
+    ).join('');
+  }
+
+  function selectDay(i) { selDay = i; selTime = null; renderDays(); renderTimes(); }
+  function selectTime(t) { selTime = t; renderTimes(); }
+
+  function submitBooking() {
+    const name = document.getElementById('clientName').value.trim();
+    const phone = document.getElementById('clientPhone').value.trim();
+    if (selDay === null) { alert('اختر يوم الموعد'); return; }
+    if (!selTime) { alert('اختر وقت الموعد'); return; }
+    if (!name) { alert('اكتب اسمك'); return; }
+    if (!phone) { alert('اكتب رقم الواتساب'); return; }
+    const dayName = getNextDays()[selDay].name;
+    document.getElementById('successMsg').style.display = 'block';
+    document.getElementById('successMsg').innerText = `✅ تم استلام طلب الحجز!\n\n${name}\nيوم ${dayName} - ${selTime}\n\nهيتواصل معاك أ. عبدالله على واتساب لتأكيد الموعد وتفاصيل الدفع.`;
+    document.getElementById('submitBtn').disabled = true;
+  }
+
+  renderDays();
+  renderTimes();
+</script>
+</body>
+</html>
