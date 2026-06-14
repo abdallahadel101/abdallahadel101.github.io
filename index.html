@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>طريق الصحة النفسية - عبدالله عادل</title>
+  <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --blue-dark:   #3a7bd5;
+      --blue-mid:    #5b9cf6;
+      --blue-light:  #93c5fd;
+      --blue-pale:   #dbeafe;
+      --blue-faint:  #eff6ff;
+      --white:       #ffffff;
+      --text-dark:   #1e3a5f;
+      --text-mid:    #3b6494;
+      --text-light:  #7bafd4;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Tajawal', sans-serif;
+      background: var(--white);
+      color: var(--text-dark);
+      overflow-x: hidden;
+    }
+
+    /* ─── NAV ─── */
+    nav {
+      position: fixed; top: 0; width: 100%; z-index: 1000;
+      background: rgba(255,255,255,0.96);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid var(--blue-pale);
+      padding: 14px 40px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 1.3rem; font-weight: 800; color: var(--blue-dark);
+    }
+    .nav-logo span { color: var(--blue-mid); }
+    .nav-links { display: flex; gap: 8px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; color: var(--text-mid);
+      font-size: 0.92rem; font-weight: 600;
+      padding: 8px 16px; border-radius: 50px;
+      transition: all .2s; cursor: pointer;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      background: var(--blue-pale); color: var(--blue-dark);
+    }
+
+    /* ─── PAGES ─── */
+    .page { display: none; min-height: 100vh; padding-top: 70px; }
+    .page.active { display: block; }
+
+    /* ─── HERO ─── */
+    .hero {
+      min-height: calc(100vh - 70px);
+      background: linear-gradient(145deg, var(--blue-faint) 0%, var(--white) 55%, var(--blue-pale) 100%);
+      display: flex; align-items: center;
+      padding: 60px 60px 80px; position: relative; overflow: hidden; gap: 60px;
+    }
+    .hero::before {
+      content: ''; position: absolute; top: -120px; right: -120px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(91,156,246,0.15) 0%, transparent 70%);
+    }
+    .hero::after {
+      content: ''; position: absolute; bottom: -80px; left: -80px;
+      width: 350px; height: 350px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(58,123,213,0.1) 0%, transparent 70%);
+    }
+    .hero-content { max-width: 560px; z-index: 1; }
+    .hero-badge {
+      display: inline-block; background: var(--blue-pale); color: var(--blue-dark);
+      font-size: 0.82rem; font-weight: 700; padding: 6px 18px; border-radius: 50px;
+      margin-bottom: 24px; letter-spacing: 0.5px;
+    }
+    .hero h1 {
+      font-size: clamp(2.2rem, 4vw, 3.4rem);
+      font-weight: 800; line-height: 1.2; color: var(--text-dark); margin-bottom: 10px;
+    }
+    .hero h1 span { color: var(--blue-mid); }
+    .hero-title { font-size: 1.1rem; color: var(--blue-mid); font-weight: 600; margin-bottom: 20px; }
+    .hero p { font-size: 1rem; color: var(--text-mid); line-height: 1.9; margin-bottom: 36px; }
+    .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--blue-dark); color: var(--white);
+      padding: 14px 30px; border-radius: 50px;
+      text-decoration: none; font-weight: 700; font-size: 0.95rem;
+      transition: all .25s; display: inline-flex; align-items: center; gap: 8px;
+      cursor: pointer; border: none; font-family: inherit;
+    }
+    .btn-primary:hover { background: var(--blue-mid); transform: translateY(-2px); }
+    .btn-outline {
+      border: 2px solid var(--blue-mid); color: var(--blue-dark);
+      padding: 12px 26px; border-radius: 50px;
+      text-decoration: none; font-weight: 700; font-size: 0.95rem;
+      transition: all .25s; cursor: pointer; background: none;
+    }
+    .btn-outline:hover { background: var(--blue-pale); }
+
+    .hero-visual { flex: 1; display: flex; justify-content: center; z-index: 1; }
+    .hero-card {
+      background: var(--white); border-radius: 28px;
+      padding: 36px 32px; box-shadow: 0 20px 60px rgba(58,123,213,0.13);
+      text-align: center; max-width: 270px; border: 1.5px solid var(--blue-pale);
+      animation: float 4s ease-in-out infinite;
+    }
+    @keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-12px); } }
+    .hero-avatar {
+      width: 96px; height: 96px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--blue-light), var(--blue-dark));
+      margin: 0 auto 16px; display: flex; align-items: center; justify-content: center; font-size: 2.6rem;
+    }
+    .hero-card h3 { font-size: 1.05rem; font-weight: 700; color: var(--text-dark); }
+    .hero-card p { font-size: 0.82rem; color: var(--text-light); margin-top: 4px; }
+    .stat-row { display: flex; gap: 14px; margin-top: 18px; border-top: 1px solid var(--blue-pale); padding-top: 18px; }
+    .stat { flex: 1; }
+    .stat-num { font-size: 1.2rem; font-weight: 800; color: var(--blue-dark); }
+    .stat-label { font-size: 0.72rem; color: var(--text-light); margin-top: 2px; }
+
+    /* ─── SECTION COMMON ─── */
+    .inner-page { padding: 80px 60px; }
+    .section-label { font-size: 0.78rem; font-weight: 700; letter-spacing: 2px; color: var(--blue-light); margin-bottom: 10px; }
+    .section-title { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 800; color: var(--text-dark); margin-bottom: 14px; line-height: 1.3; }
+    .section-title span { color: var(--blue-mid); }
+    .section-sub { font-size: 0.98rem; color: var(--text-mid); line-height: 1.8; max-width: 500px; margin-bottom: 48px; }
+
+    /* ─── ABOUT ─── */
+    .about-page { background: var(--blue-faint); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+    .about-card { background: var(--white); border-radius: 24px; padding: 40px 36px; border: 1.5px solid var(--blue-pale); box-shadow: 0 10px 40px rgba(58,123,213,0.08); }
+    .about-avatar { width: 90px; height: 90px; border-radius: 50%; background: linear-gradient(135deg, var(--blue-light), var(--blue-dark)); display: flex; align-items: center; justify-content: center; font-size: 2.4rem; margin-bottom: 20px; }
+    .about-card h2 { font-size: 1.4rem; font-weight: 800; color: var(--text-dark); margin-bottom: 6px; }
+    .about-card .role { font-size: 0.95rem; color: var(--blue-mid); font-weight: 600; margin-bottom: 18px; }
+    .about-card p { font-size: 0.92rem; color: var(--text-mid); line-height: 1.85; }
+    .cred-list { display: flex; flex-direction: column; gap: 16px; }
+    .cred-item { display: flex; align-items: flex-start; gap: 16px; padding: 20px 22px; border-radius: 16px; border: 1.5px solid var(--blue-pale); background: var(--white); transition: background .2s; }
+    .cred-item:hover { background: var(--blue-faint); }
+    .cred-icon { width: 44px; height: 44px; border-radius: 12px; background: var(--blue-pale); display: flex; align-items: center; justify-content: center; font-size: 1.3rem; flex-shrink: 0; }
+    .cred-text h4 { font-size: 0.95rem; font-weight: 700; color: var(--text-dark); }
+    .cred-text p { font-size: 0.84rem; color: var(--text-light); margin-top: 3px; }
+
+    /* ─── SERVICES ─── */
+    .services-page { background: var(--white); }
+    .services-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 22px; }
+    .service-card { background: var(--blue-faint); border-radius: 20px; padding: 30px 26px; border: 1.5px solid var(--blue-pale); transition: transform .25s, box-shadow .25s; }
+    .service-card:hover { transform: translateY(-6px); box-shadow: 0 14px 36px rgba(58,123,213,0.12); }
+    .service-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--white); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; margin-bottom: 16px; box-shadow: 0 4px 12px rgba(58,123,213,0.1); }
+    .service-card h3 { font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
+    .service-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; }
+
+    /* ─── SESSION ─── */
+    .session-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 20px; }
+    .session-card { background: var(--blue-dark); border-radius: 20px; padding: 26px 22px; text-align: center; color: var(--white); }
+    .session-card .icon { font-size: 1.8rem; margin-bottom: 12px; }
+    .session-card h3 { font-size: 0.95rem; font-weight: 700; margin-bottom: 6px; }
+    .session-card p { font-size: 0.84rem; color: rgba(255,255,255,0.7); line-height: 1.6; }
+
+    /* ─── CONTACT ─── */
+    .contact-page { background: var(--blue-faint); }
+    .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; }
+    .contact-card { background: var(--white); border-radius: 20px; padding: 28px 24px; border: 1.5px solid var(--blue-pale); display: flex; align-items: center; gap: 18px; text-decoration: none; color: var(--text-dark); transition: transform .2s, box-shadow .2s; }
+    .contact-card:hover { transform: translateY(-4px); box-shadow: 0 12px 32px rgba(58,123,213,0.12); }
+    .c-icon { width: 52px; height: 52px; border-radius: 14px; background: var(--blue-pale); display: flex; align-items: center; justify-content: center; font-size: 1.4rem; flex-shrink: 0; }
+    .c-text h4 { font-size: 0.95rem; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
+    .c-text p { font-size: 0.85rem; color: var(--text-light); }
+
+    /* ─── BOOKING / CALENDLY ─── */
+    .booking-section { margin-top: 48px; }
+    .booking-card { background: var(--white); border-radius: 24px; padding: 10px; border: 1.5px solid var(--blue-pale); box-shadow: 0 10px 40px rgba(58,123,213,0.08); max-width: 100%; }
+
+    footer { background: var(--blue-dark); color: rgba(255,255,255,0.8); text-align: center; padding: 28px 40px; font-size: 0.86rem; line-height: 1.8; }
+    footer strong { color: var(--blue-light); }
+    .wa-float { position: fixed; bottom: 28px; left: 28px; z-index: 999; background: #25d366; color: white; width: 56px; height: 56px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; text-decoration: none; box-shadow: 0 6px 20px rgba(37,211,102,0.4); transition: transform .2s; }
+    .wa-float:hover { transform: scale(1.1); }
+
+    @media (max-width: 768px) {
+      nav { padding: 12px 18px; }
+      .nav-links a { font-size: 0.82rem; padding: 6px 10px; }
+      .hero { flex-direction: column; padding: 40px 24px 60px; gap: 40px; }
+      .inner-page { padding: 50px 24px; }
+      .about-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">طريق <span>الصحة النفسية</span></div>
+  <ul class="nav-links">
+    <li><a id="link-home" class="active" onclick="showPage('home')">الرئيسية</a></li>
+    <li><a id="link-about" onclick="showPage('about')">عن عبدالله</a></li>
+    <li><a id="link-services" onclick="showPage('services')">الخدمات</a></li>
+    <li><a id="link-contact" onclick="showPage('contact')">تواصل</a></li>
+  </ul>
+</nav>
+
+<a href="https://wa.me/201150634927" target="_blank" class="wa-float">💬</a>
+
+<!-- HOME -->
+<div id="page-home" class="page active">
+  <section class="hero">
+    <div class="hero-content">
+      <div class="hero-badge">🩵 مرحباً بك في مساحتك الآمنة</div>
+      <h1>عبدالله <span>عادل</span></h1>
+      <div class="hero-title">أخصائي نفسية وإرشاد نفسي</div>
+      <p>هنا تجد مساحة آمنة وهادئة بعيدة عن الحكم والضغط. أساعدك تفهم نفسك أكتر وتعيش حياة أكثر توازناً وسكينة — من راحة بيتك، أونلاين.</p>
+      <div class="hero-btns">
+        <button class="btn-primary" onclick="showPage('contact'); setTimeout(()=>document.querySelector('.booking-section').scrollIntoView({behavior:'smooth'}), 150)">📅 احجز جلستك الآن</button>
+        <button class="btn-outline" onclick="showPage('services')">اعرف أكتر</button>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="hero-card">
+        <div class="hero-avatar">🩵</div>
+        <h3>عبدالله عادل</h3>
+        <p>أخصائي نفسية وإرشاد نفسي</p>
+        <p style="font-size:0.78rem; color:var(--text-light); margin-top:4px;">📍 6 أكتوبر · أونلاين</p>
+        <div class="stat-row">
+          <div class="stat"><div class="stat-num">60</div><div class="stat-label">دقيقة / جلسة</div></div>
+          <div class="stat"><div class="stat-num">100%</div><div class="stat-label">سرية تامة</div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <footer><strong>طريق الصحة النفسية</strong> · عبدالله عادل<br>أخصائي نفسية وإرشاد نفسي · 6 أكتوبر · جلسات أونلاين<br><span style="font-size:0.78rem; margin-top:6px; display:block;">© 2026 جميع الحقوق محفوظة</span></footer>
+</div>
+
+<!-- ABOUT -->
+<div id="page-about" class="page">
+  <div class="inner-page about-page">
+    <div class="section-label">من أنا</div>
+    <div class="section-title">تعرف على <span>عبدالله عادل</span></div>
+    <div class="section-sub">أخصائي نفسية وإرشاد نفسي متخصص في مساعدة الأفراد على تحقيق التوازن النفسي.</div>
+    <div class="about-grid">
+      <div class="about-card">
+        <div class="about-avatar">🩵</div>
+        <h2>عبدالله عادل</h2>
+        <div class="role">أخصائي نفسية وإرشاد نفسي</div>
+        <p>أؤمن بأن كل إنسان يستحق مساحة آمنة يعبر فيها عن نفسه بحرية كاملة. هدفي مساعدتك على فهم أفكارك ومشاعرك والتعامل معها بطريقة صحية وإيجابية، لتعيش حياة أكثر توازناً وسعادة. أعمل مع الأفراد أونلاين من 6 أكتوبر.</p>
+      </div>
+      <div class="cred-list">
+        <div class="cred-item"><div class="cred-icon">🎓</div><div class="cred-text"><h4>أخصائي نفسية وإرشاد نفسي</h4><p>متخصص في الصحة النفسية والإرشاد الفردي والأسري.</p></div></div>
+        <div class="cred-item"><div class="cred-icon">🧠</div><div class="cred-text"><h4>إرشاد نفسي متخصص</h4><p>خبرة في التعامل مع القلق والاكتئاب والضغوط النفسية.</p></div></div>
+        <div class="cred-item"><div class="cred-icon">📍</div><div class="cred-text"><h4>6 أكتوبر · أونلاين</h4><p>أقدم جلسات أونلاين لعملاء من جميع أنحاء العالم.</p></div></div>
+        <div class="cred-item"><div class="cred-icon">🔒</div><div class="cred-text"><h4>سرية تامة واحترافية عالية</h4><p>كل ما تشاركه يبقى بيننا في بيئة آمنة ومحترمة.</p></div></div>
+      </div>
+    </div>
+  </div>
+  <footer><strong>طريق الصحة النفسية</strong> · عبدالله عادل<br>أخصائي نفسية وإرشاد نفسي · 6 أكتوبر · جلسات أونلاين</footer>
+</div>
+
+<!-- SERVICES -->
+<div id="page-services" class="page">
+  <div class="inner-page services-page">
+    <div class="section-label">الخدمات</div>
+    <div class="section-title">كيف أقدر <span>أساعدك؟</span></div>
+    <div class="section-sub">أقدم جلسات نفسية متخصصة لمساعدتك على التعامل مع تحديات الحياة اليومية بثقة وهدوء.</div>
+    <div class="services-grid">
+      <div class="service-card"><div class="service-icon">😟</div><h3>القلق والاكتئاب</h3><p>دعم متخصص للتعامل مع القلق والاكتئاب وإيجاد طرق عملية لتحسين حالتك النفسية.</p></div>
+      <div class="service-card"><div class="service-icon">💆</div><h3>إدارة الضغوط</h3><p>مساعدتك على التعامل مع ضغوط الحياة اليومية وتطوير مهارات التكيف الصحي.</p></div>
+      <div class="service-card"><div class="service-icon">💔</div><h3>مشكلات العلاقات</h3><p>دعم في فهم وتحسين علاقاتك مع نفسك ومع الآخرين لحياة اجتماعية أفضل.</p></div>
+      <div class="service-card"><div class="service-icon">🌱</div><h3>النمو الشخصي</h3><p>رحلة لاكتشاف الذات وتطويرها وبناء ثقتك بنفسك لتحقيق أهدافك في الحياة.</p></div>
+      <div class="service-card"><div class="service-icon">👨‍👩‍👧</div><h3>الإرشاد الأسري</h3><p>دعم الأسر في تحسين التواصل وحل النزاعات وخلق بيئة أسرية صحية ومتوازنة.</p></div>
+      <div class="service-card"><div class="service-icon">🧘</div><h3>الصحة النفسية العامة</h3><p>جلسات دعم نفسي شامل لمن يريد الحفاظ على صحته النفسية وتحسين جودة حياته.</p></div>
+    </div>
+    <div style="margin-top: 60px;">
+      <div class="section-label">الجلسات</div>
+      <div class="section-title">كيف تتم <span>الجلسة؟</span></div>
+      <div class="section-sub">جلسات أونلاين مريحة من أي مكان بسرية تامة واحترافية عالية.</div>
+      <div class="session-grid">
+        <div class="session-card"><div class="icon">💻</div><h3>أونلاين بالكامل</h3><p>من راحة بيتك عبر مكالمة فيديو أو صوت — بدون تنقل.</p></div>
+        <div class="session-card"><div class="icon">⏱️</div><h3>مدة الجلسة ساعة</h3><p>60 دقيقة كاملة مخصصة ليك بدون تسرع أو ضغط.</p></div>
+        <div class="session-card"><div class="icon">🔒</div><h3>سرية تامة</h3><p>كل ما تشاركه يبقى بيننا في مساحة آمنة ومحترمة.</p></div>
+        <div class="session-card"><div class="icon">📍</div><h3>6 أكتوبر · أونلاين</h3><p>أخدم عملاء من كل مكان في العالم أونلاين.</p></div>
+      </div>
+    </div>
+  </div>
+  <footer><strong>طريق الصحة النفسية</strong> · عبدالله عادل<br>أخصائي نفسية وإرشاد نفسي · 6 أكتوبر · جلسات أونلاين</footer>
+</div>
+
+<!-- CONTACT -->
+<div id="page-contact" class="page">
+  <div class="inner-page contact-page">
+    <div class="section-label">تواصل</div>
+    <div class="section-title">ابدأ <span>رحلتك</span> معنا</div>
+    <div class="section-sub">تواصل معنا بالطريقة اللي تناسبك وهنرد عليك في أقرب وقت.</div>
+    <div class="contact-grid">
+      <a href="https://wa.me/201150634927" target="_blank" class="contact-card"><div class="c-icon">💬</div><div class="c-text"><h4>واتساب</h4><p>01150634927</p></div></a>
+      <a href="mailto:bodydoda2025@gmail.com" class="contact-card"><div class="c-icon">✉️</div><div class="c-text"><h4>إيميل</h4><p>bodydoda2025@gmail.com</p></div></a>
+      <div class="contact-card" style="cursor:default;"><div class="c-icon">📍</div><div class="c-text"><h4>العنوان</h4><p>6 أكتوبر · الجلسات أونلاين</p></div></div>
+    </div>
+
+    <div class="booking-section">
+      <div class="section-label">الحجز المباشر</div>
+      <div class="section-title">احجز <span>موعدك</span> الآن</div>
+      <div class="section-sub" style="margin-bottom:28px;">اختر الموعد المناسب لك وسيتم التنسيق تلقائياً</div>
+      <div style="text-align:center; padding: 48px 24px; background: var(--white); border-radius: 24px; border: 1.5px solid var(--blue-pale); box-shadow: 0 10px 40px rgba(58,123,213,0.08); max-width: 480px; margin: 0 auto;">
+        <div style="font-size: 3rem; margin-bottom: 16px;">📅</div>
+        <h3 style="font-size: 1.3rem; font-weight: 800; color: var(--text-dark); margin-bottom: 10px;">جلسة أونلاين · 60 دقيقة</h3>
+        <p style="font-size: 0.95rem; color: var(--text-mid); line-height: 1.8; margin-bottom: 28px;">اضغط الزر واختر الموعد المناسب ليك مباشرةً من التقويم</p>
+        <a href="https://calendly.com/dr-abdallah-adel/psychology" target="_blank" class="btn-primary" style="display:inline-flex; font-size: 1rem; padding: 16px 36px;">
+          📅 احجز موعدك الآن
+        </a>
+        <p style="font-size: 0.8rem; color: var(--text-light); margin-top: 18px;">سرية تامة · بدون التزام مسبق</p>
+      </div>
+    </div>
+  </div>
+  <footer><strong>طريق الصحة النفسية</strong> · عبدالله عادل<br>أخصائي نفسية وإرشاد نفسي · 6 أكتوبر · جلسات أونلاين</footer>
+</div>
+
+<script>
+  function showPage(name) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+    const targetPage = document.getElementById('page-' + name);
+    if (targetPage) targetPage.classList.add('active');
+    const targetLink = document.getElementById('link-' + name);
+    if (targetLink) targetLink.classList.add('active');
+    window.scrollTo(0, 0);
+  }
+</script>
+</body>
+</html>
