@@ -46,6 +46,7 @@
       font-size: 0.92rem; font-weight: 600;
       padding: 8px 16px; border-radius: 50px;
       transition: all .2s;
+      cursor: pointer;
     }
     .nav-links a:hover, .nav-links a.active {
       background: var(--blue-pale); color: var(--blue-dark);
@@ -217,7 +218,7 @@
     .service-card h3 { font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
     .service-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; }
 
-    /* ─── SERVICES - SESSION ─── */
+    /* ─── SESSION ─── */
     .session-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
       gap: 20px; margin-top: 0;
@@ -252,14 +253,65 @@
     .c-text h4 { font-size: 0.95rem; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
     .c-text p { font-size: 0.85rem; color: var(--text-light); }
 
-    /* ─── BOOKING SECTION ─── */
-    .booking-section { margin-top: 48px; width: 100%; }
-    .calendly-container {
+    /* ─── BOOKING ─── */
+    .booking-section { margin-top: 48px; }
+    .booking-card {
       background: var(--white); border-radius: 24px;
-      padding: 12px; border: 1.5px solid var(--blue-pale);
+      padding: 32px; border: 1.5px solid var(--blue-pale);
       box-shadow: 0 10px 40px rgba(58,123,213,0.08);
-      width: 100%; max-width: 900px; margin: 0 auto;
-      overflow: hidden;
+      max-width: 520px;
+      margin: 0 auto;
+    }
+    .booking-card .sub-label { font-size: 0.85rem; color: var(--text-light); margin-bottom: 12px; font-weight: 600; text-align: right; }
+    .days-row { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 20px; }
+    .day-btn {
+      min-width: 62px; padding: 10px 4px;
+      border-radius: 12px; border: 1.5px solid var(--blue-pale);
+      background: var(--blue-faint); font-size: 11px;
+      text-align: center; cursor: pointer; color: var(--text-light);
+      flex-shrink: 0; transition: all 0.15s; font-family: inherit;
+    }
+    .day-btn:hover, .day-btn.selected { background: var(--blue-pale); color: var(--blue-dark); border-color: var(--blue-light); }
+    .day-btn.selected { font-weight: 700; }
+    .day-name { font-weight: 600; font-size: 12px; }
+    .day-date { font-size: 10px; margin-top: 2px; }
+    .times-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px; }
+    .time-btn {
+      padding: 11px 4px; border-radius: 12px;
+      border: 1.5px solid var(--blue-pale); background: var(--blue-faint);
+      font-size: 13px; text-align: center; cursor: pointer;
+      color: var(--text-mid); transition: all 0.15s; font-family: inherit;
+    }
+    .time-btn:hover, .time-btn.selected { background: var(--blue-pale); color: var(--blue-dark); border-color: var(--blue-light); font-weight: 600; }
+    .input-group { margin-bottom: 12px; text-align: right; }
+    .input-group label { font-size: 0.82rem; color: var(--text-light); margin-bottom: 6px; display: block; font-weight: 600; }
+    .input-group input {
+      width: 100%; padding: 12px 14px;
+      border: 1.5px solid var(--blue-pale); border-radius: 12px;
+      font-size: 14px; background: var(--blue-faint);
+      color: var(--text-dark); font-family: inherit;
+      outline: none; transition: border 0.15s;
+      text-align: right;
+    }
+    .input-group input:focus { border-color: var(--blue-mid); background: var(--white); }
+    .submit-btn {
+      width: 100%; padding: 15px;
+      background: var(--blue-dark); color: var(--white);
+      border: none; border-radius: 12px;
+      font-size: 15px; font-weight: 700;
+      cursor: pointer; font-family: inherit;
+      transition: background 0.15s;
+    }
+    .submit-btn:hover { background: var(--blue-mid); }
+    .submit-btn:disabled { background: #ccc; color: #999; cursor: not-allowed; }
+    .success-msg {
+      display: none;
+      background: #E1F5EE; color: #0F6E56;
+      border: 1.5px solid #9FE1CB;
+      border-radius: 12px; padding: 18px;
+      text-align: center; font-size: 14px;
+      margin-top: 14px; line-height: 1.9;
+      white-space: pre-line;
     }
 
     /* ─── FOOTER ─── */
@@ -297,10 +349,10 @@
 <nav>
   <div class="nav-logo">طريق <span>الصحة النفسية</span></div>
   <ul class="nav-links">
-    <li><a href="#" class="active" onclick="showPage('home', this)">الرئيسية</a></li>
-    <li><a href="#" onclick="showPage('about', this)">عن عبدالله</a></li>
-    <li><a href="#" onclick="showPage('services', this)">الخدمات</a></li>
-    <li><a href="#" onclick="showPage('contact', this)">تواصل</a></li>
+    <li><a id="link-home" class="active" onclick="showPage('home')">الرئيسية</a></li>
+    <li><a id="link-about" onclick="showPage('about')">عن عبدالله</a></li>
+    <li><a id="link-services" onclick="showPage('services')">الخدمات</a></li>
+    <li><a id="link-contact" onclick="showPage('contact')">تواصل</a></li>
   </ul>
 </nav>
 
@@ -317,8 +369,8 @@
         أساعدك تفهم نفسك أكتر وتعيش حياة أكثر توازناً وسكينة — من راحة بيتك، أونلاين.
       </p>
       <div class="hero-btns">
-        <button class="btn-primary" onclick="showPage('contact', document.querySelector('.nav-links a[onclick*=contact]')); setTimeout(()=>document.querySelector('.booking-section').scrollIntoView({behavior:'smooth'}), 150)">📅 احجز جلستك الآن</button>
-        <button class="btn-outline" onclick="showPage('services', document.querySelector('.nav-links a:nth-child(3)'))">اعرف أكتر</button>
+        <button class="btn-primary" onclick="showPage('contact'); setTimeout(()=>document.querySelector('.booking-section').scrollIntoView({behavior:'smooth'}), 150)">📅 احجز جلستك الآن</button>
+        <button class="btn-outline" onclick="showPage('services')">اعرف أكتر</button>
       </div>
     </div>
     <div class="hero-visual">
@@ -438,72 +490,4 @@
         <h3>الصحة النفسية العامة</h3>
         <p>جلسات دعم نفسي شامل لمن يريد الحفاظ على صحته النفسية وتحسين جودة حياته.</p>
       </div>
-    </div>
-
-    <div style="margin-top: 60px;">
-      <div class="section-label">الجلسات</div>
-      <div class="section-title">كيف تتم <span>الجلسة؟</span></div>
-      <div class="section-sub">جلسات أونلاين مريحة من أي مكان بسرية تامة واحترافية عالية.</div>
-      <div class="session-grid">
-        <div class="session-card">
-          <div class="icon">💻</div>
-          <h3>أونلاين بالكامل</h3>
-          <p>من راحة بيتك عبر مكالمة فيديو أو صوت — بدون تنقل.</p>
-        </div>
-        <div class="session-card">
-          <div class="icon">⏱️</div>
-          <h3>مدة الجلسة ساعة</h3>
-          <p>60 دقيقة كاملة مخصصة ليك بدون تسرع أو ضغط.</p>
-        </div>
-        <div class="session-card">
-          <div class="icon">🔒</div>
-          <h3>سرية تامة</h3>
-          <p>كل ما تشاركه يبقى بيننا في مساحة آمنة ومحترمة.</p>
-        </div>
-        <div class="session-card">
-          <div class="icon">📍</div>
-          <h3>6 أكتوبر · أونلاين</h3>
-          <p>أخدم عملاء من كل مكان في العالم أونلاين.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-  <footer>
-    <strong>طريق الصحة النفسية</strong> · عبدالله عادل<br>
-    أخصائي نفسية وإرشاد نفسي · 6 أكتوبر · جلسات أونلاين
-  </footer>
-</div>
-
-<div id="page-contact" class="page">
-  <div class="inner-page contact-page">
-    <div class="section-label">تواصل</div>
-    <div class="section-title">ابدأ <span>رحلتك</span> معنا</div>
-    <div class="section-sub">تواصل معنا بالطريقة اللي تناسبك وهنرد عليك في أقرب وقت.</div>
-    <div class="contact-grid">
-      <a href="https://wa.me/201150634927" target="_blank" class="contact-card">
-        <div class="c-icon">💬</div>
-        <div class="c-text">
-          <h4>واتساب</h4>
-          <p>01150634927</p>
-        </div>
-      </a>
-      <a href="mailto:bodydoda2025@gmail.com" class="contact-card">
-        <div class="c-icon">✉️</div>
-        <div class="c-text">
-          <h4>إيميل</h4>
-          <p>bodydoda2025@gmail.com</p>
-        </div>
-      </a>
-      <div class="contact-card" style="cursor:default;">
-        <div class="c-icon">📍</div>
-        <div class="c-text">
-          <h4>العنوان</h4>
-          <p>6 أكتوبر · الجلسات أونلاين</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="booking-section">
-      <div class="section-label" style="margin-top:0;">الحجز الآلي الأوتوماتيكي</div>
-      <div class="section-title">احجز <span>موعدك</span> الآن المباشر</div>
-      <div class="section-sub" style="margin-bottom:28px;">اختر اليوم والوقت المناسب لك من النتيجة بالأسفل، وسي
+      
