@@ -3,9 +3,15 @@
 <head>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
+  <meta http-equiv="Pragma" content="no-cache" />
+  <meta http-equiv="Expires" content="0" />
+  
   <title>طريق الصحة النفسية - عبدالله عادل</title>
   <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@300;400;500;700;800&display=swap" rel="stylesheet"/>
+  
   <link href="https://assets.calendly.com/assets/external/widget.css" rel="stylesheet">
+  
   <style>
     :root {
       --blue-dark:   #3a7bd5;
@@ -47,7 +53,8 @@
       transition: all .2s; cursor: pointer;
     }
     .nav-links a:hover, .nav-links a.active { background: var(--blue-pale); color: var(--blue-dark); }
-        /* ─── PAGES ─── */
+
+    /* ─── PAGES ─── */
     .page { display: none; min-height: 100vh; padding-top: 70px; }
     .page.active { display: block; }
 
@@ -89,7 +96,8 @@
     .section-title { font-size: clamp(1.7rem, 3vw, 2.4rem); font-weight: 800; color: var(--text-dark); margin-bottom: 14px; line-height: 1.3; }
     .section-title span { color: var(--blue-mid); }
     .section-sub { font-size: 0.98rem; color: var(--text-mid); line-height: 1.8; max-width: 500px; margin-bottom: 48px; }
-        /* ─── ABOUT & SERVICES & CONTACT ─── */
+
+    /* ─── ABOUT & SERVICES & CONTACT ─── */
     .about-page { background: var(--blue-faint); }
     .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
     .about-card { background: var(--white); border-radius: 24px; padding: 40px 36px; border: 1.5px solid var(--blue-pale); box-shadow: 0 10px 40px rgba(58,123,213,0.08); }
@@ -130,7 +138,7 @@
     footer { background: var(--blue-dark); color: rgba(255,255,255,0.8); text-align: center; padding: 28px 40px; font-size: 0.86rem; line-height: 1.8; }
     footer strong { color: var(--blue-light); }
 
-    /* زرار الواتساب بالنبض الذكي */
+    /* زرار الواتساب بالنبض العائم المطور */
     .wa-float { 
       position: fixed; bottom: 24px; left: 24px; z-index: 999; 
       background: #25d366; color: white; width: 60px; height: 60px; border-radius: 50%; 
@@ -145,7 +153,7 @@
       100% { box-shadow: 0 0 0 0 rgba(37, 211, 102, 0); }
     }
 
-    /* تحسين القائمة والمحاذاة في الموبايل */
+    /* تحسين تجربة التصفح على الموبايل */
     @media (max-width: 768px) {
       nav { padding: 12px 14px; flex-direction: column; gap: 10px; }
       .nav-links { width: 100%; justify-content: space-between; gap: 4px; }
@@ -157,7 +165,8 @@
   </style>
 </head>
 <body>
-  <nav>
+
+<nav>
   <div class="nav-logo">طريق <span>الصحة النفسية</span></div>
   <ul class="nav-links">
     <li><a id="link-home" class="active" onclick="showPage('home')">الرئيسية</a></li>
@@ -177,7 +186,7 @@
       <div class="hero-title">أخصائي نفسية وإرشاد نفسي</div>
       <p>هنا تجد مساحة آمنة وهادئة بعيدة عن الحكم والضغط. أساعدك تفهم نفسك أكتر وتعيش حياة أكثر توازناً وسكينة — من راحة بيتك، أونلاين.</p>
       <div class="hero-btns">
-        <button class="btn-primary" onclick="openCalendly()">📅 احجز جلستك الآن</button>
+        <button class="btn-primary" onclick="openCalendly(); return false;">📅 احجز جلستك الآن</button>
         <button class="btn-outline" onclick="showPage('services')">اعرف أكتر</button>
       </div>
     </div>
@@ -195,9 +204,7 @@
     </div>
   </section>
   <footer><strong>طريق الصحة النفسية</strong> · عبدالله عادل<br>أخصائي نفسية وإرشاد نفسي · 6 أكتوبر · جلسات أونلاين<br><span style="font-size:0.78rem; margin-top:6px; display:block;">© 2026 جميع الحقوق محفوظة</span></footer>
-</div>
-
-<div id="page-about" class="page">
+</div><div id="page-about" class="page">
   <div class="inner-page about-page">
     <div class="section-label">من أنا</div>
     <div class="section-title">تعرف على <span>عبدالله عادل</span></div>
@@ -219,6 +226,7 @@
   </div>
   <footer><strong>طريق الصحة النفسية</strong> · عبدالله عادل<br>أخصائي نفسية وإرشاد نفسي · 6 أكتوبر · جلسات أونلاين</footer>
 </div>
+
 <div id="page-services" class="page">
   <div class="inner-page services-page">
     <div class="section-label">الخدمات</div>
@@ -231,6 +239,17 @@
       <div class="service-card"><div class="service-icon">🌱</div><h3>النمو الشخصي</h3><p>رحلة لاكتشاف الذات وتطويرها وبناء ثقتك بنفسك لتحقيق أهدافك في الحياة.</p></div>
       <div class="service-card"><div class="service-icon">👨‍👩‍👧</div><h3>الإرشاد الأسري</h3><p>دعم الأسر في تحسين التواصل وحل النزاعات وخلق بيئة أسرية صحية ومتوازنة.</p></div>
       <div class="service-card"><div class="service-icon">🧘</div><h3>الصحة النفسية العامة</h3><p>جلسات دعم نفسي شامل لمن يريد الحفاظ على صحته النفسية وتحسين جودة حياته.</p></div>
+    </div>
+    <div style="margin-top: 60px;">
+      <div class="section-label">الجلسات</div>
+      <div class="section-title">كيف تتم <span>الجلسة؟</span></div>
+      <div class="section-sub">جلسات أونلاين مريحة من أي مكان بسرية تامة واحترافية عالية.</div>
+      <div class="session-grid">
+        <div class="session-card"><div class="icon">💻</div><h3>أونلاين بالكامل</h3><p>من راحة بيتك عبر مكالمة فيديو أو صوت — بدون تنقل.</p></div>
+        <div class="session-card"><div class="icon">⏱️</div><h3>مدة الجلسة ساعة</h3><p>60 دقيقة كاملة مخصصة ليك بدون تسرع أو ضغط.</p></div>
+        <div class="session-card"><div class="icon">🔒</div><h3>سرية تامة</h3><p>كل ما تشاركه يبقى بيننا في مساحة آمنة ومحترمة.</p></div>
+        <div class="session-card"><div class="icon">📍</div><h3>6 أكتوبر · أونلاين</h3><p>أخدم عملاء من كل مكان في العالم أونلاين.</p></div>
+      </div>
     </div>
   </div>
   <footer><strong>طريق الصحة النفسية</strong> · عبدالله عادل<br>أخصائي نفسية وإرشاد نفسي · 6 أكتوبر · جلسات أونلاين</footer>
@@ -259,7 +278,7 @@
           💳 الاستثمار: 200 جنيه فقط <br>
           🔒 سرية تامة وأمان كامل
         </p>
-        <button onclick="openCalendly()" class="btn-primary" style="font-size: 1rem; padding: 16px 36px;">
+        <button onclick="openCalendly(); return false;" class="btn-primary" style="font-size: 1rem; padding: 16px 36px;">
           📅 اختر موعدك من التقويم
         </button>
       </div>
@@ -281,12 +300,16 @@
     window.scrollTo(0, 0);
   }
 
-  // دالة فتح كاندلي الاحترافية داخل الموقع
+  // دالة فتح التقويم في نافذة منبثقة داخل نفس الصفحة بشكل إجباري
   function openCalendly() {
-    Calendly.initPopupWidget({
-      url: 'https://calendly.com/dr-abdallah-adel/psychology'
-    });
-    return false;
+    if (typeof Calendly !== 'undefined') {
+      Calendly.initPopupWidget({
+        url: 'https://calendly.com/dr-abdallah-adel/psychology'
+      });
+    } else {
+      // حل احتياطي في حال تأخر تحميل السكربت الرسمي
+      window.open('https://calendly.com/dr-abdallah-adel/psychology', '_blank');
+    }
   }
 </script>
 </body>
