@@ -1,15 +1,6 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
-  <!-- Google tag (gtag.js) -->
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-JHPLGBYE7L"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  gtag('js', new Date());
-
-  gtag('config', 'G-JHPLGBYE7L');
-</script>
   <meta charset="UTF-8"/>
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>طريق الصحة النفسية - عبدالله عادل</title>
@@ -113,6 +104,7 @@
       padding: 14px 30px; border-radius: 50px;
       text-decoration: none; font-weight: 700; font-size: 0.95rem;
       transition: all .25s; display: inline-flex; align-items: center; gap: 8px;
+      cursor: pointer; border: none; font-family: inherit;
     }
     .btn-primary:hover { background: var(--blue-mid); transform: translateY(-2px); }
     .btn-outline {
@@ -225,7 +217,7 @@
     .service-card h3 { font-size: 1rem; font-weight: 700; color: var(--text-dark); margin-bottom: 8px; }
     .service-card p { font-size: 0.88rem; color: var(--text-mid); line-height: 1.7; }
 
-    /* ─── SESSION ─── */
+    /* ─── SERVICES - SESSION ─── */
     .session-grid {
       display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
       gap: 20px; margin-top: 0;
@@ -260,63 +252,14 @@
     .c-text h4 { font-size: 0.95rem; font-weight: 700; color: var(--text-dark); margin-bottom: 4px; }
     .c-text p { font-size: 0.85rem; color: var(--text-light); }
 
-    /* ─── BOOKING ─── */
-    .booking-section { margin-top: 48px; }
-    .booking-card {
+    /* ─── BOOKING SECTION ─── */
+    .booking-section { margin-top: 48px; width: 100%; }
+    .calendly-container {
       background: var(--white); border-radius: 24px;
-      padding: 32px; border: 1.5px solid var(--blue-pale);
+      padding: 12px; border: 1.5px solid var(--blue-pale);
       box-shadow: 0 10px 40px rgba(58,123,213,0.08);
-      max-width: 520px;
-    }
-    .booking-card .sub-label { font-size: 0.85rem; color: var(--text-light); margin-bottom: 12px; font-weight: 600; }
-    .days-row { display: flex; gap: 8px; overflow-x: auto; padding-bottom: 4px; margin-bottom: 20px; }
-    .day-btn {
-      min-width: 62px; padding: 10px 4px;
-      border-radius: 12px; border: 1.5px solid var(--blue-pale);
-      background: var(--blue-faint); font-size: 11px;
-      text-align: center; cursor: pointer; color: var(--text-light);
-      flex-shrink: 0; transition: all 0.15s; font-family: inherit;
-    }
-    .day-btn:hover, .day-btn.selected { background: var(--blue-pale); color: var(--blue-dark); border-color: var(--blue-light); }
-    .day-btn.selected { font-weight: 700; }
-    .day-name { font-weight: 600; font-size: 12px; }
-    .day-date { font-size: 10px; margin-top: 2px; }
-    .times-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; margin-bottom: 20px; }
-    .time-btn {
-      padding: 11px 4px; border-radius: 12px;
-      border: 1.5px solid var(--blue-pale); background: var(--blue-faint);
-      font-size: 13px; text-align: center; cursor: pointer;
-      color: var(--text-mid); transition: all 0.15s; font-family: inherit;
-    }
-    .time-btn:hover, .time-btn.selected { background: var(--blue-pale); color: var(--blue-dark); border-color: var(--blue-light); font-weight: 600; }
-    .input-group { margin-bottom: 12px; }
-    .input-group label { font-size: 0.82rem; color: var(--text-light); margin-bottom: 6px; display: block; font-weight: 600; }
-    .input-group input {
-      width: 100%; padding: 12px 14px;
-      border: 1.5px solid var(--blue-pale); border-radius: 12px;
-      font-size: 14px; background: var(--blue-faint);
-      color: var(--text-dark); font-family: inherit;
-      outline: none; transition: border 0.15s;
-    }
-    .input-group input:focus { border-color: var(--blue-mid); background: var(--white); }
-    .submit-btn {
-      width: 100%; padding: 15px;
-      background: var(--blue-dark); color: var(--white);
-      border: none; border-radius: 12px;
-      font-size: 15px; font-weight: 700;
-      cursor: pointer; font-family: inherit;
-      transition: background 0.15s;
-    }
-    .submit-btn:hover { background: var(--blue-mid); }
-    .submit-btn:disabled { background: #ccc; color: #999; cursor: not-allowed; }
-    .success-msg {
-      display: none;
-      background: #E1F5EE; color: #0F6E56;
-      border: 1.5px solid #9FE1CB;
-      border-radius: 12px; padding: 18px;
-      text-align: center; font-size: 14px;
-      margin-top: 14px; line-height: 1.9;
-      white-space: pre-line;
+      width: 100%; max-width: 900px; margin: 0 auto;
+      overflow: hidden;
     }
 
     /* ─── FOOTER ─── */
@@ -351,7 +294,6 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <div class="nav-logo">طريق <span>الصحة النفسية</span></div>
   <ul class="nav-links">
@@ -362,10 +304,8 @@
   </ul>
 </nav>
 
-<!-- WHATSAPP FLOAT -->
 <a href="https://wa.me/201150634927" target="_blank" class="wa-float">💬</a>
 
-<!-- HOME PAGE -->
 <div id="page-home" class="page active">
   <section class="hero">
     <div class="hero-content">
@@ -377,8 +317,8 @@
         أساعدك تفهم نفسك أكتر وتعيش حياة أكثر توازناً وسكينة — من راحة بيتك، أونلاين.
       </p>
       <div class="hero-btns">
-        <button class="btn-primary" onclick="showPage('contact', document.querySelector('.nav-links a[onclick*=contact]')); setTimeout(()=>document.querySelector('.booking-section').scrollIntoView({behavior:'smooth'}), 100)">📅 احجز جلستك الآن</button>
-        <button class="btn-outline" onclick="showPage('services', document.querySelector('.nav-links a:nth-child(3) a'))">اعرف أكتر</button>
+        <button class="btn-primary" onclick="showPage('contact', document.querySelector('.nav-links a[onclick*=contact]')); setTimeout(()=>document.querySelector('.booking-section').scrollIntoView({behavior:'smooth'}), 150)">📅 احجز جلستك الآن</button>
+        <button class="btn-outline" onclick="showPage('services', document.querySelector('.nav-links a:nth-child(3)'))">اعرف أكتر</button>
       </div>
     </div>
     <div class="hero-visual">
@@ -403,11 +343,10 @@
   <footer>
     <strong>طريق الصحة النفسية</strong> · عبدالله عادل<br>
     أخصائي نفسية وإرشاد نفسي · 6 أكتوبر · جلسات أونلاين<br>
-    <span style="font-size:0.78rem; margin-top:6px; display:block;">© 2025 جميع الحقوق محفوظة</span>
+    <span style="font-size:0.78rem; margin-top:6px; display:block;">© 2026 جميع الحقوق محفوظة</span>
   </footer>
 </div>
 
-<!-- ABOUT PAGE -->
 <div id="page-about" class="page">
   <div class="inner-page about-page">
     <div class="section-label">من أنا</div>
@@ -463,7 +402,6 @@
   </footer>
 </div>
 
-<!-- SERVICES PAGE -->
 <div id="page-services" class="page">
   <div class="inner-page services-page">
     <div class="section-label">الخدمات</div>
@@ -536,7 +474,6 @@
   </footer>
 </div>
 
-<!-- CONTACT PAGE -->
 <div id="page-contact" class="page">
   <div class="inner-page contact-page">
     <div class="section-label">تواصل</div>
@@ -566,193 +503,7 @@
       </div>
     </div>
 
-    <!-- BOOKING SECTION -->
     <div class="booking-section">
-      <div class="section-label" style="margin-top:0;">الحجز</div>
-      <div class="section-title">احجز <span>موعدك</span> الآن</div>
-      <div class="section-sub" style="margin-bottom:28px;">جلسة أونلاين · 60 دقيقة · 200 جنيه · سرية تامة</div>
-      <div class="booking-card">
-        <div class="sub-label">اختر اليوم</div>
-        <div class="days-row" id="daysRow"></div>
-        <div class="sub-label">اختر الوقت</div>
-        <div class="times-grid" id="timesGrid"></div>
-        <div class="input-group">
-          <label>الاسم الكامل</label>
-          <input type="text" id="clientName" placeholder="اكتب اسمك هنا..." />
-        </div>
-        <div class="input-group">
-          <label>رقم الواتساب</label>
-          <input type="tel" id="clientPhone" placeholder="01xxxxxxxxx" />
-        </div>
-        <button class="submit-btn" id="submitBtn" onclick="submitBooking()">تأكيد الحجز</button>
-        <div class="success-msg" id="successMsg"></div>
-      </div>
-    </div>
-
-  </div>
-  <footer>
-    <strong>طريق الصحة النفسية</strong> · عبدالله عادل<br>
-    أخصائي نفسية وإرشاد نفسي · 6 أكتوبر · جلسات أونلاين
-  </footer>
-</div>
-
-<script>
-  // ─── SUPABASE ───
-  const SUPABASE_URL = 'https://bmetvzbnybprqxqhenlk.supabase.co';
-  const SUPABASE_KEY = 'sb_publishable_onehQvCEbTkPEy-zbjxlAA_PmL1_8qs';
-
-  async function supabase(method, path, body) {
-    const res = await fetch(SUPABASE_URL + '/rest/v1/' + path, {
-      method,
-      headers: {
-        'apikey': SUPABASE_KEY,
-        'Authorization': 'Bearer ' + SUPABASE_KEY,
-        'Content-Type': 'application/json',
-        'Prefer': method === 'POST' ? 'return=minimal' : ''
-      },
-      body: body ? JSON.stringify(body) : undefined
-    });
-    if (method === 'GET') return res.json();
-    return res;
-  }
-
-  function showPage(name, el) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
-    document.getElementById('page-' + name).classList.add('active');
-    if (el) el.classList.add('active');
-    window.scrollTo(0, 0);
-  }
-
-  // ─── BOOKING ───
-  const times = ['٩:٠٠ ص','١٠:٠٠ ص','١٢:٠٠ م','٢:٠٠ م','٤:٠٠ م','٦:٠٠ م'];
-  let selDay = null, selTime = null;
-  let bookedSlots = [];
-
-  function getNextDays() {
-    const result = [];
-    const d = new Date();
-    const arDays = ['الأحد','الاثنين','الثلاثاء','الأربعاء','الخميس','الجمعة','السبت'];
-    let count = 0;
-    while (result.length < 5 && count < 14) {
-      const day = d.getDay();
-      if (day !== 5 && day !== 6) {
-        const dateKey = d.getFullYear() + '-' + String(d.getMonth()+1).padStart(2,'0') + '-' + String(d.getDate()).padStart(2,'0');
-        result.push({ name: arDays[day], date: d.getDate() + '/' + (d.getMonth()+1), dateKey, idx: result.length });
-      }
-      d.setDate(d.getDate() + 1);
-      count++;
-    }
-    return result;
-  }
-
-  async function loadBookedSlots() {
-    const days = getNextDays();
-    const keys = days.map(d => d.dateKey);
-    try {
-      const data = await supabase('GET', `booked_slots?date_key=in.(${keys.join(',')})`);
-      bookedSlots = data || [];
-    } catch(e) {
-      bookedSlots = [];
-    }
-  }
-
-  function isBooked(dateKey, timeSlot) {
-    return bookedSlots.some(s => s.date_key === dateKey && s.time_slot === timeSlot);
-  }
-
-  function renderDays() {
-    const el = document.getElementById('daysRow');
-    if (!el) return;
-    el.innerHTML = getNextDays().map((d, i) =>
-      `<button class="day-btn${selDay===i?' selected':''}" onclick="selectDay(${i})">
-        <div class="day-name">${d.name}</div>
-        <div class="day-date">${d.date}</div>
-      </button>`
-    ).join('');
-  }
-
-  function renderTimes() {
-    const el = document.getElementById('timesGrid');
-    if (!el) return;
-    if (selDay === null) {
-      el.innerHTML = times.map(t =>
-        `<button class="time-btn" disabled style="opacity:0.4;">${t}</button>`
-      ).join('');
-      return;
-    }
-    const dayInfo = getNextDays()[selDay];
-    el.innerHTML = times.map(t => {
-      const booked = isBooked(dayInfo.dateKey, t);
-      return `<button class="time-btn${selTime===t?' selected':''}${booked?' booked':''}"
-        onclick="${booked ? '' : `selectTime('${t}')`}"
-        ${booked ? 'disabled' : ''}
-        style="${booked ? 'opacity:0.4;cursor:not-allowed;text-decoration:line-through;' : ''}"
-        title="${booked ? 'محجوز' : ''}">${t}${booked ? ' ✗' : ''}</button>`;
-    }).join('');
-  }
-
-  function selectDay(i) { selDay = i; selTime = null; renderDays(); renderTimes(); }
-  function selectTime(t) { selTime = t; renderTimes(); }
-
-  async function submitBooking() {
-    const name = document.getElementById('clientName').value.trim();
-    const phone = document.getElementById('clientPhone').value.trim();
-    if (selDay === null) { alert('اختر يوم الموعد'); return; }
-    if (!selTime) { alert('اختر وقت الموعد'); return; }
-    if (!name) { alert('اكتب اسمك'); return; }
-    if (!phone) { alert('اكتب رقم الواتساب'); return; }
-
-    const btn = document.getElementById('submitBtn');
-    btn.disabled = true;
-    btn.innerText = 'جاري الحجز...';
-
-    const dayInfo = getNextDays()[selDay];
-
-    try {
-      const res = await supabase('POST', 'booked_slots', {
-        date_key: dayInfo.dateKey,
-        time_slot: selTime
-      });
-
-      if (res.status === 409) {
-        alert('عذراً! هذا الموعد اتحجز للتو. اختر وقت تاني.');
-        await loadBookedSlots();
-        renderTimes();
-        btn.disabled = false;
-        btn.innerText = 'تأكيد الحجز';
-        return;
-      }
-
-      // فتح واتساب
-      const waText = encodeURIComponent(
-        `📅 طلب حجز جديد\n\nالاسم: ${name}\nالواتساب: ${phone}\nاليوم: ${dayInfo.name} (${dayInfo.date})\nالوقت: ${selTime}`
-      );
-      window.open(`https://wa.me/201150634927?text=${waText}`, '_blank');
-
-      const msg = document.getElementById('successMsg');
-      msg.style.display = 'block';
-      msg.innerText = `✅ تم الحجز بنجاح!\n\n${name}\nيوم ${dayInfo.name} (${dayInfo.date}) - ${selTime}\n\nهيتواصل معاك أ. عبدالله على واتساب لتأكيد الموعد وتفاصيل الدفع.`;
-      btn.innerText = 'تم الحجز ✅';
-
-    } catch(e) {
-      alert('حصل خطأ، حاول تاني');
-      btn.disabled = false;
-      btn.innerText = 'تأكيد الحجز';
-    }
-  }
-
-  // Initialize booking when contact page is shown
-  const origShowPage = showPage;
-  window.showPage = async function(name, el) {
-    origShowPage(name, el);
-    if (name === 'contact') {
-      await loadBookedSlots();
-      renderDays();
-      renderTimes();
-    }
-  };
-</script>
-
-</body>
-</html>
+      <div class="section-label" style="margin-top:0;">الحجز الآلي الأوتوماتيكي</div>
+      <div class="section-title">احجز <span>موعدك</span> الآن المباشر</div>
+      <div class="section-sub" style="margin-bottom:28px;">اختر اليوم والوقت المناسب لك من النتيجة بالأسفل، وسي
